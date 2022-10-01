@@ -12,13 +12,12 @@ var storage = {
 function generatePassword() {
  var storedChars = [];
  var passwordToBeRandomized = "";
-//  var noUndefined = "Please click Generate Password!";
   //prompt for password length
   let passLength = Number(prompt("How long of a password would you like? (Must be between 8 and 128 characters"));
    //check if its valid and escape if not
     if ((!passLength) || (passLength < 8) || (passLength > 128)) {
-      alert("Please enter a valid number"); return; 
-    //generatePassword();
+      alert("Please enter a valid number"); 
+      return generatePassword();
   }
 
 
@@ -48,25 +47,16 @@ function generatePassword() {
   //if no options were selected
     if (!lowerCaseConfirmation && !upperCaseConfirmation && !numbersConfirmation && !specialCharactersConfirmation) {
     alert("Please select atleast one option!");
-    return;
+    return "Please try again!";
     }
     storedChars = storedChars.toString();
     storedChars = storedChars.split('');
   //randomize password from stored values
     for (let i = 0; i < passLength; i++) {
-        passwordToBeRandomized = passwordToBeRandomized + storedChars[Math.floor(Math.random() * storedChars.length)];
+        passwordToBeRandomized += storedChars[Math.floor(Math.random() * storedChars.length)];
     }
     return passwordToBeRandomized;
-    // if (!passwordToBeRandomized) {
-    //     return noUndefined;
-    // }
-    // //use recursive call to generate again
-    // let newPassword = confirm("Congratulations! Your random password is below! Would you like to generate a new password?");
-    // if (newPassword) {
-    // generatePassword();
-    // }
 }
-
 
 
 
